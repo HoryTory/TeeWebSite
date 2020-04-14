@@ -3,9 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {Button} from 'element-ui';
+import less from 'less';
+import './assets/less/global.less'
+import {Button,Calendar,Container,Header,Main,Footer} from 'element-ui';
 
+Vue.use(less);
 Vue.use(Button);
+Vue.use(Calendar);
+Vue.use(Container);
+Vue.use(Header);
+Vue.use(Main);
+Vue.use(Footer);
 
 Vue.config.productionTip = false
 
