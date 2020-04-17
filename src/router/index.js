@@ -7,7 +7,9 @@ import News from "@/components/News";
 import Culture from "@/components/Culture";
 import Activity from "@/components/Activity";
 import Aboutus from "@/components/Aboutus";
-import Main from '@/components/Main'
+import Main from "@/components/Main";
+import DetailOfAct from "@/components/DetailOfAct";
+import DetailOfCul from "@/components/DetailOfCul";
 
 Vue.use(Router);
 
@@ -18,11 +20,6 @@ export default new Router({
       redirect: "/home",
       component: Main,
       children: [
-        {
-          path: "/home",
-          name: "Home",
-          component: Home
-        },
         {
           path: "/product",
           name: "Product",
@@ -39,16 +36,31 @@ export default new Router({
           component: Culture
         },
         {
+          path: "/culture/detail",
+          name: "DetailOfCul",
+          component: DetailOfCul
+        },
+        {
           path: "/activity",
           name: "Activity",
           component: Activity
+        },
+        {
+          path: "/activity/detail",
+          name: "DetailOfAct",
+          component: DetailOfAct
         },
         {
           path: "/aboutus",
           name: "Aboutus",
           component: Aboutus
         }
-      ] 
+      ]
+    },
+    {
+      path: "/home",
+      name: "Home",
+      component: Home
     },
     {
       path: "/login",
