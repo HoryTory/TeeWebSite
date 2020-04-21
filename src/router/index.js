@@ -10,6 +10,7 @@ import Aboutus from "@/components/Aboutus";
 import Main from "@/components/Main";
 import DetailOfAct from "@/components/DetailOfAct";
 import DetailOfCul from "@/components/DetailOfCul";
+import Admin from "@/components/Admin";
 
 Vue.use(Router);
 
@@ -66,6 +67,11 @@ export default new Router({
       path: "/login",
       name: "Login",
       component: Login
+    },
+    {
+      path: "/admin",
+      name: "Admin",
+      component: Admin
     }
   ]
 });

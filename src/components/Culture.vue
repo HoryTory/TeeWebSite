@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="toper"></div>
     <div class="banner"></div>
     <div class="imgsBox">
       <p @click="showDetails">{{ content }}</p>
@@ -57,9 +58,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.toper {
+  height: 82px;
+  background-color: #fbfbfb;
+}
 .banner {
   position: relative;
-  height: 415px;
+  height: 350px;
   background: url("../assets/images/4/4_02.png") no-repeat;
   background-size: 100% 100%;
 }

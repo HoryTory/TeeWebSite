@@ -105,6 +105,7 @@ export default {
 
 <style lang="less" scoped>
 .banner {
+  margin-top: 82px;
   box-shadow: 0px 5px 3px #dedcdd;
   height: 415px;
   position: relative;

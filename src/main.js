@@ -5,9 +5,9 @@ import App from "./App";
 import router from "./router";
 import less from "less";
 import "./assets/less/global.less";
+
 import {
   Button,
-  Calendar,
   Container,
   Header,
   Main,
@@ -17,14 +17,22 @@ import {
   MenuItem,
   Image,
   Carousel,
-  CarouselItem
+  CarouselItem,
+  Avatar,
+  Col,
+  Row,
+  Aside,
+  Card,
+  Table,
+  TableColumn,
+  Pagination,
+  Dialog
 } from "element-ui";
 
 import VueRouter from "vue-router";
 
 Vue.use(less);
 Vue.use(Button);
-Vue.use(Calendar);
 Vue.use(Container);
 Vue.use(Header);
 Vue.use(Main);
@@ -35,7 +43,16 @@ Vue.use(MenuItem);
 Vue.use(Image);
 Vue.use(Carousel);
 Vue.use(CarouselItem);
+Vue.use(Avatar);
 Vue.use(VueRouter);
+Vue.use(Col);
+Vue.use(Row);
+Vue.use(Aside);
+Vue.use(Card);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Pagination);
+Vue.use(Dialog);
 
 Vue.config.productionTip = false;
 

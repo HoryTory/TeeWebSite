@@ -16,22 +16,28 @@
         ></el-image>
         <p>{{ cotent }}</p>
       </div>
-      <el-carousel type="card" height="125px" arrow="always">
-        <el-carousel-item v-for="item in imagesbox" :key="item.id">
-          <img :src="item.idView" class="image" />
-        </el-carousel-item>
-      </el-carousel>
+      <div class="carousel">
+        <i class="el-icon-arrow-left"></i>
+        <el-image
+          style="height:100px;width:200px"
+          v-for="item in imagesbox"
+          :key="item.id"
+          :src="item.idView"
+        ></el-image>
+        <i class="el-icon-arrow-right"></i>
+      </div>
     </div>
     <div class="contact">
       <div class="top">
         <p>联系我们</p>
         <span>CONTACT US</span>
       </div>
-      <el-image
+      <!-- <el-image
         style="width: 100%; height: 250px"
         :src="require('../assets/images/6/map.png')"
         fit="fill"
-      ></el-image>
+      ></el-image> -->
+      <div class="mapBox" id="mapBox"></div>
       <div class="mask">
         <div class="contactmethods">
           <p>电话: 0571-2121546541</p>
@@ -54,6 +60,8 @@
 </template>
 
 <script>
+import { MP } from "../map";
+// import BMap from "BMap";
 export default {
   data() {
     return {
@@ -70,7 +78,8 @@ export default {
       pics: [
         { imgUrl: require("../assets/images/6/6_18.png"), name: "微信" },
         { imgUrl: require("../assets/images/6/6_20.png"), name: "微博" }
-      ]
+      ],
+      ak: "ITWvsLofAlD5BI24btzmGiiuA0PVvqhM"
     };
   },
   methods: {
@@ -79,14 +88,41 @@ export default {
     },
     mouseLeave() {
       this.isShown = !this.isShown;
+    },
+    drawMap() {
+      var map = new BMap.Map("mapBox"); // 创建Map实例
+      var point = new BMap.Point(120.116507, 30.226216); //设置中心经纬度坐标
+      map.centerAndZoom(point, 17); // 初始化地图,地图级别
+      var mark = new BMap.Marker(point);
+      map.addOverlay(mark); //添加标记
+      mark.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+      //添加地图类型控件
+      map.addControl(
+        new BMap.MapTypeControl({
+          mapTypes: [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP]
+        })
+      );
+      map.setCurrentCity("杭州"); // 设置地图显示的城市 此项是必须设置的
+      map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+      var sContent = "公司地址公司地址";
+      var opt = { width: 80, height: 45, title: "公司名称" };
+      var infoWindow = new BMap.InfoWindow(sContent, opt); // 创建信息窗口对象
+      map.openInfoWindow(infoWindow, point); //开启信息窗口
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      MP(this.ak).then(BMap => {
+        console.log(BMap);
+        this.drawMap();
+      });
+    });
   }
 };
 </script>
 
 <style lang="less" scoped>
 .banner {
-  margin-top: -86px;
   position: relative;
   height: 415px;
   background: url("../assets/images/6/6_01.png") no-repeat;
@@ -109,6 +145,11 @@ export default {
       margin-top: 10px;
       font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     }
+  }
+  .mapBox {
+    height: 300px;
+    width: 100%;
+    border-radius: 5px;
   }
   .maintext {
     text-align: justify;
@@ -137,9 +178,15 @@ export default {
       }
     }
   }
-}
-.el-carousel__item {
-  width: 210px;
-  height: 120px;
+  .carousel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 5%;
+    i {
+      font-size: 50px;
+      color: lightgrey;
+    }
+  }
 }
 </style>

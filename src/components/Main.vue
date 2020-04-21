@@ -85,7 +85,6 @@ export default {
     padding: 0;
     position: absolute;
     width: 100%;
-    padding-top: 86px;
   }
   .el-footer {
     display: flex;

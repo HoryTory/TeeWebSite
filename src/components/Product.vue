@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="toper"></div>
     <div class="banner"></div>
     <ul>
       <li v-for="(item, index) in productLst" :key="index">
@@ -95,6 +96,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.toper {
+  height: 86px;
+  background-color: #f9f9f9;
+}
 .banner {
   height: 415px;
   background: url("../assets/images/2/2_02.png") no-repeat;

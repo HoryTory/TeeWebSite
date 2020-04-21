@@ -28,7 +28,7 @@
       <ul>
         <li v-for="(item, index) in newspage" :key="index">
           <div class="pagedate">
-            <p>{{ item.pagetime.split("-")[2][1] }}</p>
+            <p>{{ parseInt(item.pagetime.split("-")[2]) }}</p>
             <p>{{ item.pagetime.slice(0, 7) }}</p>
           </div>
           <div class="pagetext">
@@ -140,7 +140,6 @@ export default {
 
 <style lang="less" scoped>
 .banner {
-  margin-top: -86px;
   height: 415px;
   position: relative;
   background: url("../assets/images/3/3_01.png") no-repeat;
